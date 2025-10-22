@@ -13,6 +13,7 @@ A modern web application for visualizing and managing work shift patterns for ro
 CrewShift is designed for workers in rotating shift environments such as manufacturing plants, security services, healthcare facilities, and 24/7 operations. The application automatically calculates and displays your work schedule based on a rotating shift pattern, while allowing you to customize individual days for vacation planning, overtime tracking, and personal modifications.
 
 **Perfect for teams working in rotating shifts who need to:**
+
 - Track when they're scheduled to work (early shift, late shift, or days off)
 - Plan and visualize vacation days throughout the year
 - Keep track of overtime and schedule changes
@@ -152,11 +153,13 @@ The build artifacts will be stored in the `dist/` directory and can be deployed 
 ### First Time Setup
 
 1. **Sign In**
+
    - Open the application in your browser
    - Click "Sign in with Google" button
    - Authorize the application with your Google account
 
 2. **Select Your Crew**
+
    - After signing in, you'll be prompted to select your crew/team
    - Choose from available crews: David, Trevor, or Paddy
    - Each crew has a different start date for their shift rotation
@@ -169,13 +172,13 @@ The build artifacts will be stored in the `dist/` directory and can be deployed 
 
 The calendar uses an intuitive color-coding system to help you quickly identify your schedule:
 
-| Color | Shift Type | Description |
-|-------|-----------|-------------|
-| 🟡 **Yellow** | Early Shift | Your scheduled early shift days |
-| 🟠 **Orange** | Late Shift | Your scheduled late shift days |
-| 🟢 **Green** | Days Off | Your regular days off according to the shift pattern |
-| 🟣 **Purple** | Annual Leave | Days you've marked as vacation/annual leave |
-| 🔴 **Red Dot** | Public Holiday | National holidays (appears as a small indicator) |
+| Color          | Shift Type     | Description                                          |
+| -------------- | -------------- | ---------------------------------------------------- |
+| 🟡 **Yellow**  | Early Shift    | Your scheduled early shift days                      |
+| 🟠 **Orange**  | Late Shift     | Your scheduled late shift days                       |
+| 🟢 **Green**   | Days Off       | Your regular days off according to the shift pattern |
+| 🟣 **Purple**  | Annual Leave   | Days you've marked as vacation/annual leave          |
+| 🔴 **Red Dot** | Public Holiday | National holidays (appears as a small indicator)     |
 
 ### Modifying Your Schedule
 
@@ -195,6 +198,7 @@ Need to work on a day off? Took time off during a work day? You can easily adjus
 
 1. **Click on the day** you want to modify
 2. In the Day Type Selector, choose the appropriate type:
+
    - **Early Shift** - If you're working an early shift instead of your scheduled type
    - **Late Shift** - If you're working a late shift
    - **Days Off** - If you have a day off instead of a work day
@@ -212,12 +216,14 @@ If you need to undo a modification:
 3. Click the reset button to restore the day to its automatic shift pattern
 
 Alternatively, you can:
+
 - **Reset individual days** through the day type selector
 - **Clear all modifications** for the entire year using the settings menu
 
 ### Navigation Features
 
 #### Month Navigation
+
 - Use the **left/right arrows** in the calendar header to move between months
 - Click **"Today"** button to instantly jump to the current date
 - Use the **month/year selector** to jump to any specific month
@@ -253,17 +259,20 @@ View your schedule statistics through the analytics section:
 ### Common Use Cases
 
 #### Planning a Vacation
+
 1. Browse future months to find when you have natural days off
 2. Click on work days you want to take as vacation
 3. Select "Annual Leave" to mark them
 4. Check your remaining annual leave balance
 
 #### Recording Overtime
+
 1. Find a day that was originally a day off
 2. Click on it and change it to "Early Shift" or "Late Shift"
 3. The system tracks that you worked on a scheduled day off
 
 #### Adjusting for Schedule Changes
+
 1. If your actual shift differs from the pattern
 2. Simply click the day and change it to the correct type
 3. The modification is saved and synced across all devices
@@ -361,27 +370,32 @@ Contributions are welcome! Whether you want to fix bugs, add features, or improv
 ### How to Contribute
 
 1. **Fork the repository**
+
    ```bash
    # Fork via GitHub UI, then clone your fork
    git clone https://github.com/YOUR_USERNAME/crew-shift.git
    ```
 
 2. **Create a feature branch**
+
    ```bash
    git checkout -b feature/amazing-new-feature
    ```
 
 3. **Make your changes**
+
    - Follow the existing code style and conventions
    - Add tests if applicable
    - Update documentation as needed
 
 4. **Commit your changes**
+
    ```bash
    git commit -m 'Add some amazing new feature'
    ```
 
 5. **Push to your fork**
+
    ```bash
    git push origin feature/amazing-new-feature
    ```
@@ -417,12 +431,14 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ### What This Means
 
 You are free to:
+
 - ✅ Use this software commercially
 - ✅ Modify the source code
 - ✅ Distribute copies
 - ✅ Use it privately
 
 Under the condition that:
+
 - � You include the original license and copyright notice
 
 ## �🙏 Acknowledgments
