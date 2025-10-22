@@ -1,0 +1,219 @@
+:host ::ng-deep {
+  .p-dialog-mask {
+    z-index: 9999 !important;
+    touch-action: manipulation;
+  }
+  
+  .p-dialog {
+    touch-action: manipulation;
+    
+    .p-dialog-content {
+      touch-action: manipulation;
+    }
+  }
+}
+
+.day-type-selector {
+  touch-action: manipulation;
+  
+  .selected-date {
+    text-align: center;
+    margin-bottom: 1rem;
+
+    h4 {
+      margin: 0 0 0.5rem 0;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .current-type {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-color-secondary);
+    }
+  }
+
+  .section-header {
+    text-align: center;
+    margin: 1rem 0;
+
+    h4 {
+      margin: 0;
+      color: var(--text-color);
+      font-weight: 500;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+  }
+
+  .annual-leave-info {
+    background: var(--surface-ground);
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+
+      .label {
+        font-weight: 500;
+        color: var(--text-color);
+      }
+    }
+
+    .warning-message {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--red-500);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+
+      i {
+        color: var(--red-500);
+      }
+    }
+  }
+
+  .day-type-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .day-type-option {
+    padding: 1rem;
+    border: 2px solid var(--surface-border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--surface-card);
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover:not(.disabled) {
+      border-color: var(--primary-color);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transform: translateY(-1px);
+    }
+
+    &:active:not(.disabled) {
+      transform: translateY(0);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    &.selected {
+      border-color: var(--primary-color);
+      background: var(--primary-50);
+      box-shadow: 0 2px 8px rgba(var(--primary-color-rgb), 0.2);
+
+      .option-header {
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+    }
+
+    &.disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      background: var(--surface-100);
+      touch-action: none;
+
+      &:hover {
+        border-color: var(--surface-border);
+        box-shadow: none;
+        transform: none;
+      }
+
+      &:active {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+
+    .option-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+
+      i {
+        font-size: 1.2rem;
+        width: 20px;
+        text-align: center;
+      }
+
+      .option-label {
+        flex: 1;
+        font-weight: 500;
+        font-size: 1rem;
+      }
+
+      .current-indicator {
+        color: var(--green-500);
+        font-size: 1rem;
+      }
+
+      .original-indicator {
+        color: var(--blue-500);
+        font-size: 1rem;
+        margin-left: 0.25rem;
+      }
+    }
+
+    .option-description {
+      color: var(--text-color-secondary);
+      font-size: 0.9rem;
+      margin-left: 2rem;
+    }
+
+    .option-disabled-message {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--red-500);
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      margin-left: 2rem;
+
+      i {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+// Shift type specific colors
+.day-type-option {
+  &[data-shift-type="off"] {
+    &.selected, &:hover:not(.disabled) {
+      border-color: var(--green-500);
+      background: var(--green-50);
+    }
+  }
+
+  &[data-shift-type="early"] {
+    &.selected, &:hover:not(.disabled) {
+      border-color: var(--blue-500);
+      background: var(--blue-50);
+    }
+  }
+
+  &[data-shift-type="late"] {
+    &.selected, &:hover:not(.disabled) {
+      border-color: var(--orange-500);
+      background: var(--orange-50);
+    }
+  }
+
+  &[data-shift-type="annual_leave"] {
+    &.selected, &:hover:not(.disabled) {
+      border-color: var(--purple-500);
+      background: var(--purple-50);
+    }
+  }
+}

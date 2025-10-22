@@ -1,0 +1,24 @@
+<div
+  [class]="dayClasses()"
+  (click)="onDayClick($event)"
+  (touchstart)="onTouchStart($event)"
+  (touchmove)="onTouchMove($event)"
+  (touchend)="onTouchEnd($event)"
+>
+  <div class="calendar-day__number">
+    {{ dayNumber() }}
+    @if (isHoliday() && !isOtherMonth()) {
+    <span class="calendar-day__holiday-indicator">●</span>
+    }
+  </div>
+
+  @if (shiftDescription() && showShiftLabels() && !isOtherMonth()) {
+  <div class="calendar-day__shift-info">
+    {{ shiftDescription() }}
+  </div>
+  }
+
+  <div class="calendar-day__content">
+    <ng-content></ng-content>
+  </div>
+</div>

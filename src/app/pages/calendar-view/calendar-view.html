@@ -1,0 +1,58 @@
+<div class="calendar-view">
+  <!-- Crew Information -->
+  <app-crew-info [currentCrew]="currentCrew()"></app-crew-info>
+
+  <!-- Calendar header -->
+  <app-calendar-header
+    [currentMonthYear]="currentMonthYear()"
+    [selectedDate]="selectedDate()"
+    (previousMonthClicked)="previousMonth()"
+    (nextMonthClicked)="nextMonth()"
+    (todayClicked)="goToToday()"
+    (dateSelected)="onDateSelect($event)"
+  ></app-calendar-header>
+
+  <!-- Days of the week -->
+  <div class="calendar-weekdays">
+    @for (weekDay of weekDays(); track weekDay) {
+    <div class="calendar-weekday">{{ weekDay }}</div>
+    }
+  </div>
+
+  <!-- Calendar -->
+  <div class="calendar-grid">
+    @for (week of calendarWeeks(); track $index) {
+    <div class="calendar-week">
+      @for (day of week; track day.uniqueId) {
+      <app-calendar-day
+        [dayNumber]="day.dayNumber"
+        [isToday]="day.isToday"
+        [isOtherMonth]="day.isOtherMonth"
+        [shiftType]="day.shiftData.shiftType"
+        [isHoliday]="day.shiftData.isHoliday"
+        [isModified]="day.shiftData.isModified"
+        [date]="day.date"
+        [showShiftLabels]="showShiftLabels()"
+        (dayClicked)="onDayClick($event)"
+      >
+      </app-calendar-day>
+      }
+    </div>
+    }
+  </div>
+
+  <!-- Calendar Legend -->
+  <app-calendar-legend></app-calendar-legend>
+
+  <!-- Day Type Selector Modal -->
+  <app-day-type-selector
+    [visible]="showDayTypeSelector()"
+    [selectedDate]="selectedDayForEdit()"
+    [currentShiftType]="selectedDayShiftType()"
+    [originalShiftType]="selectedDayOriginalType()"
+    [isModified]="selectedDayIsModified()"
+    [currentCrew]="currentCrew()"
+    (visibleChange)="onDayTypeSelectorVisibilityChange($event)"
+    (dayTypeSelected)="onDayTypeSelected($event)"
+  ></app-day-type-selector>
+</div>

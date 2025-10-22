@@ -1,0 +1,59 @@
+<div class="calendar-header-frame">
+  <div class="calendar-header">
+    <p-button
+      class="prev-button"
+      icon="pi pi-chevron-left"
+      [text]="true"
+      [rounded]="true"
+      severity="secondary"
+      (onClick)="previousMonth($event)"
+      (touchend)="previousMonth($event)"
+      ariaLabel="Mes anterior"
+    />
+
+    <h2
+      class="calendar-title clickable-title"
+      (click)="op.toggle($event)"
+      [title]="currentMonthYear()"
+    >
+      {{ currentMonthYear() }}
+      <i class="pi pi-calendar-plus" style="margin-left: 8px; font-size: 0.8em"></i>
+    </h2>
+
+    <p-popover #op>
+      <div class="date-picker-container">
+        <h4>Select Month and Year</h4>
+        <p-datepicker
+          [ngModel]="selectedDate()"
+          (onSelect)="onDateSelect($event); op.hide()"
+          view="month"
+          dateFormat="mm/yy"
+          [minDate]="minDate"
+          [maxDate]="maxDate"
+          [inline]="true"
+          [showIcon]="false"
+        />
+      </div>
+    </p-popover>
+
+    <p-button
+      class="next-button"
+      icon="pi pi-chevron-right"
+      [text]="true"
+      [rounded]="true"
+      severity="secondary"
+      (onClick)="nextMonth($event)"
+      (touchend)="nextMonth($event)"
+      ariaLabel="Next month"
+    />
+
+    <p-button
+      class="today-button"
+      label="Today"
+      [outlined]="true"
+      severity="primary"
+      (onClick)="goToToday($event)"
+      (touchend)="goToToday($event)"
+    />
+  </div>
+</div>

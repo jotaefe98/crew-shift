@@ -1,0 +1,146 @@
+.calendar-view {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.calendar-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-transform: capitalize;
+  flex: 1;
+  text-align: center;
+  
+  &.clickable-title {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 8px 16px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:hover {
+      background-color: #f0f8ff;
+      color: #007bff;
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  margin-bottom: 8px;
+  background: #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.calendar-weekday {
+  background: #f8f9fa;
+  padding: 12px 8px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.calendar-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.calendar-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+}
+
+// Date picker styles
+.date-picker-container {
+  padding: 16px;
+  min-width: 300px;
+  
+  h4 {
+    margin: 0 0 16px 0;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  :deep(.p-datepicker) {
+    border: none;
+    box-shadow: none;
+    
+    .p-datepicker-header {
+      background: #f8f9fa;
+      border-bottom: 1px solid #e9ecef;
+      
+      .p-datepicker-title {
+        color: #495057;
+        font-weight: 600;
+      }
+    }
+    
+    .p-datepicker-calendar {
+      .p-datepicker-other-month {
+        color: #6c757d;
+      }
+      
+      .p-datepicker-today {
+        background: #e3f2fd;
+        color: #1976d2;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .calendar-view {
+    padding: 16px;
+  }
+
+  .calendar-title {
+    font-size: 20px;
+  }
+
+  .calendar-weekday {
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+  
+  .date-picker-container {
+    min-width: 280px;
+    padding: 12px;
+    
+    h4 {
+      font-size: 14px;
+    }
+  }
+}

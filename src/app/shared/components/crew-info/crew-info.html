@@ -1,0 +1,41 @@
+<div class="crew-info">
+  <div class="crew-frame">
+    <button
+      class="crew-name-button"
+      (click)="openCrewSelection($event)"
+      (touchend)="openCrewSelection($event)"
+      title="Click to change crew"
+    >
+      <span class="crew-name">{{ getCrewDisplayName() }}</span>
+      <i class="pi pi-chevron-down crew-arrow"></i>
+    </button>
+    <p-button
+      class="settings-button"
+      icon="pi pi-cog"
+      [text]="true"
+      [rounded]="true"
+      severity="secondary"
+      (onClick)="openSettings($event)"
+      (touchend)="openSettings($event)"
+      ariaLabel="Settings"
+      title="Settings"
+    />
+  </div>
+</div>
+
+<!-- Settings Modal -->
+<app-settings-modal
+  [visible]="showSettingsModal()"
+  (visibilityChange)="onSettingsModalVisibilityChange($event)"
+/>
+
+<!-- Crew Selection Modal -->
+<app-crew-selection-modal
+  [visible]="showCrewSelectionModal()"
+  [title]="'Select Crew'"
+  [subtitle]="'Choose which crew schedule to view:'"
+  [showFooter]="false"
+  [closable]="true"
+  (crewSelected)="onCrewSelected($event)"
+  (visibilityChange)="onCrewSelectionModalVisibilityChange($event)"
+/>

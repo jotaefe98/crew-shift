@@ -1,0 +1,8 @@
+@if (showCrewSelection()) {
+<app-crew-selection-modal
+  [visible]="true"
+  [closable]="false"
+></app-crew-selection-modal>
+} @else {
+<app-calendar-view></app-calendar-view>
+}

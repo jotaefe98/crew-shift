@@ -1,0 +1,155 @@
+.calendar-legend {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  
+  .legend-title {
+    margin: 0 0 16px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  .legend-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .legend-section {
+    margin-bottom: 0;
+  }
+
+  .section-title {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+  }
+
+  .legend-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .legend-color {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: 1px solid;
+    flex-shrink: 0;
+
+    &[data-shift="early"] {
+      background-color: #fef3c7;
+      border-color: #f59e0b;
+    }
+
+    &[data-shift="late"] {
+      background-color: #fed7aa;
+      border-color: #ea580c;
+    }
+
+    &[data-shift="off"] {
+      background-color: #dcfce7;
+      border-color: #16a34a;
+    }
+
+    &[data-shift="annual_leave"] {
+      background-color: #e9d5ff;
+      border-color: #9333ea;
+    }
+  }
+
+  .legend-indicator {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    flex-shrink: 0;
+    
+    &--modified {
+      border: 2px dashed #dc2626 !important;
+      background-color: transparent !important;
+      color: transparent !important;
+      border-radius: 2px;
+    }
+  }
+
+  .legend-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .legend-label {
+    font-weight: 500;
+    font-size: 14px;
+    color: #1f2937;
+  }
+
+  .legend-description {
+    font-size: 12px;
+    color: #6b7280;
+  }
+
+  // Responsive adjustments for smaller screens
+  @media (max-width: 640px) {
+    padding: 12px;
+    margin: 12px 0;
+
+    .legend-title {
+      font-size: 16px;
+    }
+
+    .legend-container {
+      gap: 16px;
+    }
+
+    .legend-items {
+      gap: 6px;
+    }
+
+    .legend-item {
+      gap: 8px;
+    }
+
+    .legend-color,
+    .legend-indicator {
+      width: 20px;
+      height: 20px;
+    }
+
+    .legend-indicator--modified {
+      border-width: 2px !important;
+    }
+
+    .legend-label {
+      font-size: 13px;
+    }
+
+    .legend-description {
+      font-size: 11px;
+    }
+  }
+
+  // Only switch to single column on very small screens
+  @media (max-width: 380px) {
+    .legend-container {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+<div class="calendar-legend">
+  <h3 class="legend-title">Shift Legend</h3>
+
+  <div class="legend-container">
+    <div class="legend-section">
+      <h4 class="section-title">Shift Types</h4>
+      <div class="legend-items">
+        @for (shift of shiftTypes; track shift.type) {
+        <div class="legend-item">
+          <div class="legend-color" [attr.data-shift]="shift.type"></div>
+          <div class="legend-info">
+            <span class="legend-label">{{ shift.label }}</span>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="legend-section">
+      <h4 class="section-title">Indicators</h4>
+      <div class="legend-items">
+        @for (indicator of indicators; track indicator.symbol) {
+        <div class="legend-item">
+          <div
+            class="legend-indicator"
+            [class.legend-indicator--modified]="indicator.symbol === '□'"
+            [style.color]="indicator.color"
+            [style.background-color]="indicator.backgroundColor ?? 'transparent'"
+            [style.border]="indicator.border ?? 'none'"
+          >
+            {{ indicator.symbol }}
+          </div>
+          <div class="legend-info">
+            <span class="legend-label">{{ indicator.label }}</span>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

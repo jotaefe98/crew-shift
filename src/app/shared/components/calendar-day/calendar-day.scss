@@ -1,0 +1,223 @@
+.calendar-day {
+  position: relative;
+  width: 100%;
+  min-height: 80px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 8px;
+  box-sizing: border-box;
+  // Improve touch behavior on mobile
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  // Only apply hover effects on devices that support hover (not touch devices)
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: #f8fafc;
+      border-color: #cbd5e1;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  // Active state for better mobile feedback
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  &__number {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  &__content {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+  }
+
+  &__shift-info {
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+    padding: 2px 4px;
+    border-radius: 4px;
+    margin-bottom: 2px;
+    line-height: 1.2;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #ffffff;
+    backdrop-filter: blur(4px);
+  }
+
+  &__holiday-indicator {
+    color: #dc2626;
+    font-size: 14px;
+    margin-left: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  &__modified-indicator {
+    color: #dc2626;
+    font-size: 16px;
+    margin-left: 4px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    line-height: 1;
+  }
+
+  // Shift states
+  &--early {
+    background-color: #fef3c7;
+
+    .calendar-day__modified-indicator {
+      color: #dc2626;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: #fde68a;
+      }
+    }
+  }
+
+  &--late {
+    background-color: #fed7aa;
+
+    .calendar-day__modified-indicator {
+      color: #dc2626;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: #fdba74;
+      }
+    }
+  }
+
+  &--off {
+    background-color: #dcfce7;
+
+    .calendar-day__modified-indicator {
+      color: #dc2626;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: #bbf7d0;
+      }
+    }
+  }
+
+  &--annual-leave {
+    background-color: #e9d5ff;
+
+    .calendar-day__modified-indicator {
+      color: #dc2626;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: #ddd6fe;
+      }
+    }
+  }
+
+  &--modified {
+    border-style: dashed;
+    border-color: #dc2626;
+    border-width: 2px;
+  }
+
+  // Estados del día
+  &--today {
+    border-color: #3b82f6;
+    border-width: 2px;
+    border-style: solid;
+
+    .calendar-day__number {
+      color: #1d4ed8;
+      font-weight: 700;
+    }
+  }
+
+  &--selected {
+    background-color: #3b82f6;
+    border-color: #1d4ed8;
+
+    .calendar-day__number {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .calendar-day__modified-indicator {
+      color: #ffffff;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: #2563eb;
+      }
+    }
+  }
+
+  &--other-month {
+    background-color: #f9fafb;
+    
+    .calendar-day__number {
+      color: #9ca3af;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: #f3f4f6;
+      }
+    }
+  }
+
+  &--has-events {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0.25rem;
+      right: 0.25rem;
+      width: 0.375rem;
+      height: 0.375rem;
+      background-color: #10b981;
+      border-radius: 50%;
+    }
+
+    &.calendar-day--selected::after {
+      background-color: #ffffff;
+    }
+  }
+
+  // Responsive
+  @media (max-width: 640px) {
+    padding: 0.25rem;
+    
+    &__number {
+      font-size: 0.75rem;
+    }
+  }
+}

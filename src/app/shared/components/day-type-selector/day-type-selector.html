@@ -1,0 +1,78 @@
+<p-dialog
+  [(visible)]="dialogVisible"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [closable]="true"
+  [closeOnEscape]="true"
+  [dismissableMask]="true"
+  [style]="{ width: '420px' }"
+  (click)="$event.stopPropagation()"
+  (touchend)="$event.stopPropagation()"
+>
+  <div class="day-type-selector">
+    <!-- Date Display -->
+    <div class="selected-date">
+      <h4>{{ formattedDate() }}</h4>
+    </div>
+
+    <p-divider></p-divider>
+
+    <div class="section-header">
+      <h4>Select Day Type</h4>
+    </div>
+
+    <!-- Day Type Options -->
+    <div class="day-type-options">
+      @for (option of dayTypeOptions(); track $index) {
+      <div
+        [class]="getOptionClasses(option)"
+        [attr.data-shift-type]="option.type"
+        (click)="onDayTypeSelect($event, option.type)"
+        (touchend)="onDayTypeSelect($event, option.type)"
+      >
+        <div class="option-header">
+          <i [class]="option.icon"></i>
+          <span class="option-label">{{ option.label }}</span>
+          @if (isCurrentType(option.type)) {
+          <i class="pi pi-check current-indicator"></i>
+          } @if (option.isOriginal) {
+          <i class="pi pi-refresh original-indicator"></i>
+          }
+        </div>
+
+        @if (shouldShowDisabledMessage(option)) {
+        <div class="option-disabled-message">
+          <i class="pi pi-ban"></i>
+          Annual leave limit reached
+        </div>
+        }
+      </div>
+      }
+    </div>
+
+    <p-divider></p-divider>
+
+    <!-- Annual Leave Counter -->
+    <div class="annual-leave-info">
+      <div class="info-row">
+        <span class="label">Annual Leave Usage:</span>
+        <p-tag
+          [value]="annualLeaveInfo().used + ' / ' + annualLeaveInfo().total + ' days'"
+          [severity]="isAnnualLeaveAtLimit() ? 'danger' : 'info'"
+        >
+        </p-tag>
+      </div>
+      @if (shouldShowAnnualLeaveWarning()) {
+      <div class="warning-message">
+        <i class="pi pi-exclamation-triangle"></i>
+        You have reached the annual leave limit for this year.
+      </div>
+      }
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <p-button label="Cancel" severity="secondary" (onClick)="dialogVisible.set(false)"> </p-button>
+  </ng-template>
+</p-dialog>

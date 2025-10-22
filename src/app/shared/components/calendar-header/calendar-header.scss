@@ -1,0 +1,126 @@
+.calendar-header-frame {
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  background: #f9fafb;
+  margin-bottom: 16px;
+  // Prevent zoom on mobile devices
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  
+  // Prevent zoom and double-tap on all buttons
+  :deep(.p-button) {
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    
+    &:active {
+      transform: scale(0.98);
+      transition: transform 0.1s ease;
+    }
+  }
+}
+
+.calendar-title {
+  flex: 1;
+  text-align: center;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.clickable-title {
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #1d4ed8;
+  }
+}
+
+.date-picker-container {
+  padding: 16px;
+
+  h4 {
+    margin: 0 0 12px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #374151;
+  }
+}
+
+@media (max-width: 768px) {
+  .calendar-header-frame {
+    padding: 12px;
+  }
+
+  .calendar-header {
+    gap: 8px;
+  }
+
+  .calendar-title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .calendar-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-areas: "prev-btn title next-btn today-btn";
+    align-items: center;
+    gap: 4px;
+  }
+
+  .calendar-title {
+    grid-area: title;
+    font-size: 1.1rem;
+    margin: 0 4px;
+  }
+
+  .prev-button {
+    grid-area: prev-btn;
+    justify-self: start;
+  }
+
+  .next-button {
+    grid-area: next-btn;
+    justify-self: end;
+  }
+
+  .today-button {
+    grid-area: today-btn;
+    justify-self: end;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-title {
+    font-size: 1rem;
+  }
+  
+  .calendar-header-frame {
+    padding: 8px;
+  }
+}

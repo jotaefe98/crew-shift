@@ -1,0 +1,48 @@
+<p-dialog
+  [visible]="visible()"
+  (visibleChange)="onVisibilityChange($event)"
+  [modal]="true"
+  [resizable]="false"
+  [draggable]="false"
+  [closable]="closable()"
+  [header]="title()"
+  [style]="{ width: '400px', maxWidth: '90vw' }"
+  styleClass="crew-selection-modal"
+>
+  <div class="selection-content">
+    <p class="welcome-text">{{ subtitle() }}</p>
+
+    <div class="crew-options">
+      @for (crewOption of crewOptions; track crewOption.type) {
+      <div
+        class="crew-option"
+        [class.selected]="selectedCrew() === crewOption.type"
+        (click)="selectCrew(crewOption.type)"
+      >
+        <div class="crew-info">
+          <h4 class="crew-title">{{ crewOption.title }}</h4>
+        </div>
+        <div class="selection-indicator">
+          @if (selectedCrew() === crewOption.type) {
+          <i class="pi pi-check"></i>
+          }
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+
+  @if (showFooter()) {
+  <ng-template pTemplate="footer">
+    <div class="dialog-footer">
+      <p-button
+        label="Continue"
+        icon="pi pi-arrow-right"
+        iconPos="right"
+        (onClick)="confirmSelection()"
+        [disabled]="!selectedCrew()"
+      />
+    </div>
+  </ng-template>
+  }
+</p-dialog>
