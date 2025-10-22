@@ -120,6 +120,64 @@
   }
 }
 
+// Source Code Section
+.source-code-section {
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.source-code-text {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: #495057;
+
+  .pi-github {
+    font-size: 18px;
+    color: #212529;
+  }
+
+  span {
+    font-weight: 500;
+  }
+
+  .separator {
+    color: #adb5bd;
+    font-weight: 300;
+  }
+}
+
+.source-code-link {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 4px;
+  border-radius: 4px;
+
+  &:hover {
+    color: #004499;
+    text-decoration: underline;
+    background-color: rgba(0, 102, 204, 0.1);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
 // Responsive design
 @media (max-width: 768px) {
   .calendar-view {
@@ -141,6 +199,20 @@
     
     h4 {
       font-size: 14px;
+    }
+  }
+
+  .source-code-section {
+    margin-top: 16px;
+    padding: 12px 16px;
+  }
+
+  .source-code-text {
+    font-size: 13px;
+    gap: 6px;
+
+    .pi-github {
+      font-size: 16px;
     }
   }
 }
